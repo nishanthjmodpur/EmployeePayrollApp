@@ -15,7 +15,7 @@ import com.validation.Validator;
 /*
  * --------------------------------Main Class------------------------------------
  * 
- * Entry point of Use Case 3.
+ * Entry point of Use Case 5
  * 
  * Execution Flow:
  * 	1. Take input from user
@@ -25,7 +25,7 @@ import com.validation.Validator;
  * 	5. Display Confirmation
  * 
  * @author Developer
- * @version 3.0
+ * @version 5.0
  */
 
 public class EmployeePayrollApp {
