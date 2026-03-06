@@ -1,8 +1,11 @@
 package com.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.dashboarddisplay.Dashboard;
+import com.dashboarddisplay.DashboardFactory;
 import com.employeeauthentication.AuthenticationService;
 import com.employeeauthentication.Session;
 import com.employeepayroll.PayrollService;
@@ -107,6 +110,20 @@ public class EmployeePayrollApp {
 	                } else {
 	                    System.out.println("Download token expired.");
 	                }
+	                // === UC5: Dashboard Display ===
+	                System.out.println("\n=== USE CASE 5: DASHBOARD DISPLAY ===");
+	                System.out.print("Enter Role (EMPLOYEE/MANAGER): ");
+	                String role = scanner.next().trim();
+
+	                Dashboard dashboard = DashboardFactory.getDashboard(role);
+	                if (dashboard != null) {
+	                    ArrayList<Payslip> payslipList = new ArrayList<>();
+	                    payslipList.add(payslip);
+	                    dashboard.display(payslipList, emp);
+	                } else {
+	                    System.out.println("Invalid role entered.");
+	                }
+
 				} else {
 					System.out.println("Session expired.");
 				}
