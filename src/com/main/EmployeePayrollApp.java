@@ -22,18 +22,16 @@ import com.validation.Validator;
  * --------------------------------Main Class------------------------------------
  * 
 
- * Entry point of Use Case 5
+ * Entry point of Use Case 6
  * 
  * Execution Flow:
- * 1. Create original payslip
- * 2. Clone payslip for download
- * 3. Verify equality and identity
- * 4. Check download expiry
- * 5. Save payslip to files
- * 6. Print cloned payslip
+ *  1. Read user inputs
+ *  2. Validate each input
+ *  3. Stop immediately if validation fails
+ *  4. Proceed only when all inputs are valid
  * 
  * @author Developer
- * @version 5.0
+ * @version 6.0
  */
 
 public class EmployeePayrollApp {

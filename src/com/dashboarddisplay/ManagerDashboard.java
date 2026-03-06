@@ -6,6 +6,11 @@ import java.util.*;
 import com.employeepayroll.Payslip;
 import com.employeeregistration.Employee;
 
+/*
+ * Manager Dashboard:
+ * This class implements the Dashboard interface and overrides the display method
+ * to print manager specific information.
+ */
 
 public class ManagerDashboard implements Dashboard {
     @Override

@@ -5,6 +5,11 @@ import java.util.*;
 import com.employeepayroll.Payslip;
 import com.employeeregistration.Employee;
 
+/*
+ * Employee Dashboard:
+ * This class implements the Dashboard interface and overrides the display method
+ * to print employee specific details
+ */
 
 public class EmployeeDashboard implements Dashboard {
     @Override
