@@ -3,6 +3,8 @@ package com.main;
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.employeeauthentication.AuthenticationService;
+import com.employeeauthentication.Session;
 import com.employeeregistration.Employee;
 import com.employeeregistration.UserAccount;
 import com.validation.ValidationException;
@@ -47,6 +49,18 @@ public class EmployeePayrollApp {
 		} catch (IOException e) {
 			System.out.println("\nError saving employee data!");
 		}
+		
+		 AuthenticationService auth = new AuthenticationService();
+	        Session session = auth.login();
+
+	        if (session != null) {
+	            System.out.println("\n" + session);
+	            if (!session.isExpired()) {
+	                System.out.println("Session active and valid.");
+	            } else {
+	                System.out.println("Session expired.");
+	            }
+	        }
 		
 		scanner.close();
 	}
