@@ -1,5 +1,7 @@
 package com.employeeregistration;
 
+import com.employeeauthentication.PasswordUtil;
+
 /*
  * This class represents login related information
  */
@@ -10,7 +12,7 @@ public class UserAccount {
 	
 	public UserAccount(String loginId, String password) {
 		this.loginId = loginId;
-		this.password = password;
+		this.password = PasswordUtil.hashPassword(password);
 	}
 	
 	public String getLoginId() {
@@ -18,6 +20,6 @@ public class UserAccount {
 	}
 	
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = PasswordUtil.hashPassword(password);
 	}
 }
