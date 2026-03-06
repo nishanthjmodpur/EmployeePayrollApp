@@ -18,7 +18,8 @@ import com.validation.Validator;
 /*
  * --------------------------------Main Class------------------------------------
  * 
- * Entry point of Use Case 4.
+
+ * Entry point of Use Case 5
  * 
  * Execution Flow:
  * 1. Create original payslip
@@ -29,7 +30,7 @@ import com.validation.Validator;
  * 6. Print cloned payslip
  * 
  * @author Developer
- * @version 4.0
+ * @version 5.0
  */
 
 public class EmployeePayrollApp {
