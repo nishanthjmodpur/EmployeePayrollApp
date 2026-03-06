@@ -1,0 +1,7 @@
+*.class
+*.classpath
+*.project
+*.txt
+/bin/*
+/.settings/
+src/module-info.java
