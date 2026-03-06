@@ -41,4 +41,20 @@ public class Payslip {
 				+ "Net Pay         : " + components.netPay + "\n"
 				+ "===============================\n";
 	}
+	
+	public String getEmployeeId() {
+		return employee.getEmpId();
+	}
+	
+	public String getEmpName() {
+		return employee.getName();
+	}
+	
+	public String getMonth() {
+		return month;
+	}
+	
+	public double getNetpay() {
+		return components.netPay;
+	}
 }

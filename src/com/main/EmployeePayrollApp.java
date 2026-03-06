@@ -9,23 +9,27 @@ import com.employeepayroll.PayrollService;
 import com.employeepayroll.Payslip;
 import com.employeeregistration.Employee;
 import com.employeeregistration.UserAccount;
+import com.printpayslip.DownloadToken;
+import com.printpayslip.DownloadablePayslip;
+import com.printpayslip.FileService;
 import com.validation.ValidationException;
 import com.validation.Validator;
 
 /*
  * --------------------------------Main Class------------------------------------
  * 
- * Entry point of Use Case 3.
+ * Entry point of Use Case 4.
  * 
  * Execution Flow:
- * 	1. Take input from user
- * 	2. Validate user input
- * 	3. Create objects
- * 	4. Persist data
- * 	5. Display Confirmation
+ * 1. Create original payslip
+ * 2. Clone payslip for download
+ * 3. Verify equality and identity
+ * 4. Check download expiry
+ * 5. Save payslip to files
+ * 6. Print cloned payslip
  * 
  * @author Developer
- * @version 3.0
+ * @version 4.0
  */
 
 public class EmployeePayrollApp {
@@ -75,6 +79,33 @@ public class EmployeePayrollApp {
 
 					Payslip payslip = service.generatePayslip(emp, month, basic, hra, da, allowances);
 					System.out.println(payslip);
+					
+		               // === UC4: Print / Download ===
+	                System.out.println("\n=== USE CASE 4: PAYSLIP PRINT / DOWNLOAD ===");
+	                DownloadablePayslip dlPayslip = new DownloadablePayslip(
+	                        payslip.getEmployeeId(), payslip.getEmpName(), payslip.getMonth(), payslip.getNetpay());
+
+	                DownloadablePayslip copy = (DownloadablePayslip) dlPayslip.clone();
+	                System.out.println("Verified: Download copy is equal to original.");
+	                System.out.println("Original hashcode : " + dlPayslip.hashCode());
+	                System.out.println("Cloned   hashcode : " + copy.hashCode());
+
+	                DownloadToken token = new DownloadToken();
+	                if (!token.isExpired()) {
+	                    try {
+	                        FileService fs = new FileService();
+	                        String txtFile = fs.savePayslipAsText(copy);
+	                        String pdfFile = fs.savePayslipAsPdf(copy);
+	                        System.out.println("Payslip Download Successful.");
+	                        System.out.println("Saved as text file: " + txtFile);
+	                        System.out.println("Saved as PDF file : " + pdfFile);
+	                        System.out.println("\n--- Printed Payslip ---\n" + copy);
+	                    } catch (Exception e) {
+	                        System.out.println("Download failed: " + e.getMessage());
+	                    }
+	                } else {
+	                    System.out.println("Download token expired.");
+	                }
 				} else {
 					System.out.println("Session expired.");
 				}
